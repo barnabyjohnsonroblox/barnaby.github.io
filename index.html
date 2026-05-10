@@ -6,83 +6,87 @@
     <title>Legal | Barnaby AI</title>
     <style>
         :root {
-            --bg-color: #f9f9fb;
-            --surface-color: #ffffff;
+            /* Basic color palette for glass effect */
+            --glass-bg: rgba(255, 255, 255, 0.45); /* Frosted background */
+            --glass-border: rgba(255, 255, 255, 0.2); /* Thin, semi-transparent border */
             --text-main: #333333;
             --text-muted: #666666;
             --accent: #2563eb;
-            --border: #e5e7eb;
-        }
-
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --bg-color: #121212;
-                --surface-color: #1e1e1e;
-                --text-main: #e0e0e0;
-                --text-muted: #a0a0a0;
-                --accent: #60a5fa;
-                --border: #333333;
-            }
+            --page-bg-gradient: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); /* Page-wide white-blueish gradient */
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.7;
             color: var(--text-main);
-            background-color: var(--bg-color);
+            background: var(--page-bg-gradient); /* Applied across the entire page */
             margin: 0;
             padding: 0;
+            /* Added to ensure background extends fully */
+            min-height: 100vh;
         }
 
+        /* Modern, subtle glass effect wrapper */
         .container {
             max-width: 800px;
-            margin: 40px auto;
-            background: var(--surface-color);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin: 60px auto;
+            background: var(--glass-bg);
+            /* Frosted glass effect */
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); /* Safari support */
+            padding: 60px;
+            border-radius: 20px;
+            /* Glossy reflection/glare logic through shadows and border */
+            border: 1px solid var(--glass-border);
+            box-shadow: 
+                0 8px 32px 0 rgba(31, 38, 135, 0.1), /* Soft outer blur shadow */
+                inset 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle inner highlight glare */
         }
 
         nav {
             display: flex;
-            gap: 15px;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border);
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle internal division */
+            justify-content: center; /* Center links for balance */
         }
 
         nav a {
             text-decoration: none;
             color: var(--accent);
             font-weight: 600;
+            transition: color 0.3s ease;
         }
 
         nav a:hover {
+            color: #1a4fcc; /* Subtle lift on hover */
             text-decoration: underline;
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-top: 0;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: var(--text-main);
+            font-weight: 800; /* Extra weight for a modern look */
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-top: 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
+            font-size: 1.7rem;
+            margin-top: 2.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle internal division */
         }
 
         h3 {
-            font-size: 1.2rem;
-            margin-top: 1.5rem;
+            font-size: 1.3rem;
+            margin-top: 2rem;
         }
 
         h4 {
-            font-size: 1.1rem;
-            margin-top: 1.2rem;
+            font-size: 1.15rem;
+            margin-top: 1.5rem;
         }
 
         p, li {
@@ -94,39 +98,43 @@
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         a {
             color: var(--accent);
+            text-decoration: none;
         }
+        a:hover { text-decoration: underline; }
 
         .date-badge {
             display: inline-block;
-            background: var(--border);
+            background: rgba(255, 255, 255, 0.15); /* Translucent badge bg */
             color: var(--text-main);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-size: 0.88rem;
             font-weight: 500;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
 
         hr {
             border: 0;
             height: 1px;
-            background: var(--border);
-            margin: 40px 0;
+            background: rgba(255, 255, 255, 0.1); /* Subtle hr */
+            margin: 50px 0;
         }
 
         @media (max-width: 768px) {
             .container {
                 margin: 0;
-                padding: 20px;
+                padding: 30px; /* Reduced mobile padding */
                 border-radius: 0;
-                box-shadow: none;
+                box-shadow: none; /* No shadow needed on full screen mobile */
+                backdrop-filter: none; /* Potentially too heavy for small devices/performance */
+                background: rgba(255, 255, 255, 0.9); /* Solid translucent bg for mobile */
             }
-            h1 { font-size: 1.8rem; }
+            h1 { font-size: 2rem; }
         }
     </style>
 </head>
