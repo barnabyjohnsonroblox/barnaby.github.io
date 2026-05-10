@@ -1,330 +1,622 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal | Barnaby AI</title>
-    <style>
-        :root {
-            /* Basic color palette for glass effect */
-            --glass-bg: rgba(255, 255, 255, 0.45); /* Frosted background */
-            --glass-border: rgba(255, 255, 255, 0.2); /* Thin, semi-transparent border */
-            --text-main: #333333;
-            --text-muted: #666666;
-            --accent: #2563eb;
-            --page-bg-gradient: linear-gradient(135deg, #ffffff 0%, #e0f2fe 100%); /* Page-wide white-blueish gradient */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Legal | Barnaby AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: var(--text-main);
-            background: var(--page-bg-gradient); /* Applied across the entire page */
-            margin: 0;
-            padding: 0;
-            /* Added to ensure background extends fully */
-            min-height: 100vh;
-        }
+    :root {
+      --glass-white: rgba(255,255,255,0.52);
+      --glass-border: rgba(255,255,255,0.75);
+      --glass-inner: rgba(255,255,255,0.3);
+      --glass-shadow: rgba(180,210,255,0.18);
+      --text-dark: #1a1f2e;
+      --text-mid: #3a4260;
+      --text-muted: #6b7599;
+      --accent: #2f6bff;
+      --accent-light: rgba(47,107,255,0.12);
+      --spec-highlight: rgba(255,255,255,0.9);
+    }
 
-        /* Modern, subtle glass effect wrapper */
-        .container {
-            max-width: 800px;
-            margin: 60px auto;
-            background: var(--glass-bg);
-            /* Frosted glass effect */
-            backdrop-filter: blur(15px); 
-            -webkit-backdrop-filter: blur(15px); /* Safari support */
-            padding: 60px;
-            border-radius: 20px;
-            /* Glossy reflection/glare logic through shadows and border */
-            border: 1px solid var(--glass-border);
-            box-shadow: 
-                0 8px 32px 0 rgba(31, 38, 135, 0.1), /* Soft outer blur shadow */
-                inset 0 0 10px rgba(255, 255, 255, 0.1); /* Subtle inner highlight glare */
-        }
+    html { scroll-behavior: smooth; }
 
-        nav {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 40px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle internal division */
-            justify-content: center; /* Center links for balance */
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      min-height: 100vh;
+      background: linear-gradient(160deg,
+        #d4e8ff 0%,
+        #e8f2ff 18%,
+        #f0f8ff 35%,
+        #e2efff 52%,
+        #cce0ff 68%,
+        #daeeff 85%,
+        #eef6ff 100%);
+      background-attachment: fixed;
+      overflow-x: hidden;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: var(--accent);
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
+    /* animated ambient orbs */
+    body::before, body::after {
+      content: '';
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    body::before {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(120,170,255,0.35) 0%, transparent 70%);
+      top: -150px; left: -150px;
+      animation: drift1 18s ease-in-out infinite alternate;
+    }
+    body::after {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(180,220,255,0.3) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+      animation: drift2 22s ease-in-out infinite alternate;
+    }
+    @keyframes drift1 { to { transform: translate(80px, 60px); } }
+    @keyframes drift2 { to { transform: translate(-60px, -80px); } }
 
-        nav a:hover {
-            color: #1a4fcc; /* Subtle lift on hover */
-            text-decoration: underline;
-        }
+    /* ── NAV ── */
+    .site-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
+      background: rgba(255,255,255,0.42);
+      backdrop-filter: blur(28px) saturate(1.6);
+      -webkit-backdrop-filter: blur(28px) saturate(1.6);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.6) inset,
+        0 4px 24px rgba(160,200,255,0.12);
+    }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-top: 0;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-            font-weight: 800; /* Extra weight for a modern look */
-        }
+    .nav-logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
 
-        h2 {
-            font-size: 1.7rem;
-            margin-top: 2.5rem;
-            padding-bottom: 0.8rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle internal division */
-        }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+    }
 
-        h3 {
-            font-size: 1.3rem;
-            margin-top: 2rem;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 20px;
+      border: 1px solid transparent;
+      transition: all 0.25s ease;
+      background: transparent;
+    }
+    .nav-links a:hover {
+      background: rgba(255,255,255,0.6);
+      border-color: var(--glass-border);
+      color: var(--accent);
+      box-shadow: 0 2px 12px rgba(160,200,255,0.2);
+    }
 
-        h4 {
-            font-size: 1.15rem;
-            margin-top: 1.5rem;
-        }
+    /* ── LAYOUT ── */
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 104px 24px 80px;
+    }
 
-        p, li {
-            color: var(--text-muted);
-        }
+    /* ── PILL TABS ── */
+    .tab-bar {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 6px;
+      width: fit-content;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.8) inset,
+        0 4px 20px rgba(160,200,255,0.15);
+    }
 
-        ul {
-            padding-left: 20px;
-        }
+    .tab-bar a {
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      padding: 9px 22px;
+      border-radius: 32px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    .tab-bar a:hover {
+      color: var(--text-dark);
+      background: rgba(255,255,255,0.5);
+    }
+    .tab-bar a.active {
+      background: rgba(255,255,255,0.85);
+      color: var(--accent);
+      box-shadow: 0 2px 12px rgba(47,107,255,0.12), 0 1px 0 rgba(255,255,255,0.9) inset;
+    }
 
-        li {
-            margin-bottom: 12px;
-        }
+    /* ── GLASS CARD ── */
+    .glass-card {
+      background: var(--glass-white);
+      backdrop-filter: blur(32px) saturate(1.8);
+      -webkit-backdrop-filter: blur(32px) saturate(1.8);
+      border-radius: 28px;
+      border: 1px solid var(--glass-border);
+      padding: 56px 64px;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        0 1px 0 rgba(255,255,255,0.9) inset,
+        0 -1px 0 rgba(255,255,255,0.4) inset,
+        0 16px 64px rgba(160,200,255,0.18),
+        0 4px 16px rgba(47,107,255,0.06);
+      margin-bottom: 20px;
+    }
 
-        a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-        a:hover { text-decoration: underline; }
+    /* glare streak */
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 50%;
+      background: linear-gradient(180deg,
+        rgba(255,255,255,0.35) 0%,
+        rgba(255,255,255,0) 100%);
+      border-radius: 28px 28px 0 0;
+      pointer-events: none;
+    }
 
-        .date-badge {
-            display: inline-block;
-            background: rgba(255, 255, 255, 0.15); /* Translucent badge bg */
-            color: var(--text-main);
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 500;
-            margin-bottom: 2.5rem;
-        }
+    /* ── SECTION HEADER ── */
+    .section-header {
+      margin-bottom: 40px;
+    }
 
-        hr {
-            border: 0;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1); /* Subtle hr */
-            margin: 50px 0;
-        }
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-light);
+      border: 1px solid rgba(47,107,255,0.2);
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
 
-        @media (max-width: 768px) {
-            .container {
-                margin: 0;
-                padding: 30px; /* Reduced mobile padding */
-                border-radius: 0;
-                box-shadow: none; /* No shadow needed on full screen mobile */
-                backdrop-filter: none; /* Potentially too heavy for small devices/performance */
-                background: rgba(255, 255, 255, 0.9); /* Solid translucent bg for mobile */
-            }
-            h1 { font-size: 2rem; }
-        }
-    </style>
+    h1.page-title {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 5vw, 3rem);
+      color: var(--text-dark);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .date-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── CONTENT TYPOGRAPHY ── */
+    .content h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      margin-top: 48px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.6);
+      letter-spacing: -0.01em;
+    }
+
+    .content h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      margin-top: 28px;
+      margin-bottom: 10px;
+    }
+
+    .content h4 {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-mid);
+      margin-top: 20px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .content p {
+      color: var(--text-mid);
+      margin-bottom: 16px;
+      font-size: 0.9375rem;
+    }
+
+    .content ul {
+      padding-left: 0;
+      list-style: none;
+      margin-bottom: 16px;
+    }
+
+    .content li {
+      color: var(--text-mid);
+      font-size: 0.9375rem;
+      padding: 10px 14px 10px 36px;
+      position: relative;
+      border-radius: 10px;
+      transition: background 0.2s;
+      margin-bottom: 4px;
+    }
+    .content li:hover {
+      background: rgba(255,255,255,0.45);
+    }
+    .content li::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 18px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    .content strong {
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .content a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(47,107,255,0.25);
+      transition: border-color 0.2s;
+    }
+    .content a:hover { border-color: var(--accent); }
+
+    /* ── DIVIDER ── */
+    .glass-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8) 30%, rgba(160,200,255,0.4) 50%, rgba(255,255,255,0.8) 70%, transparent);
+      margin: 32px 0;
+    }
+
+    /* ── CONTACT BLOCK ── */
+    .contact-block {
+      margin-top: 40px;
+      padding: 24px 28px;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset;
+    }
+    .contact-block p {
+      margin: 0;
+      font-size: 0.875rem;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      text-align: center;
+      padding: 32px 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      .site-nav {
+        padding: 0 20px;
+        height: 56px;
+      }
+      .nav-links { display: none; }
+
+      .page { padding: 80px 16px 60px; }
+
+      .glass-card {
+        padding: 32px 24px;
+        border-radius: 20px;
+      }
+      .glass-card::before { border-radius: 20px 20px 0 0; }
+
+      h1.page-title { font-size: 1.75rem; }
+
+      .tab-bar {
+        width: 100%;
+        justify-content: center;
+      }
+      .tab-bar a { padding: 9px 16px; font-size: 0.8125rem; }
+    }
+
+    @media (max-width: 400px) {
+      .tab-bar { flex-direction: column; border-radius: 16px; }
+      .tab-bar a { border-radius: 12px; text-align: center; }
+    }
+
+    /* smooth section fade-in */
+    section { animation: fadeUp 0.5s ease both; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <nav>
-            <a href="#privacy-policy">Privacy Policy</a>
-            <a href="#terms-conditions">Terms & Conditions</a>
-        </nav>
-
-        <section id="privacy-policy">
-            <h1>Privacy Policy</h1>
-            <div class="date-badge">Last updated: May 10, 2026</div>
-            
-            <p>This Privacy Policy describes our policies and procedures regarding the collection, use, and disclosure of your information when you use the Service. It also informs you about your privacy rights and how the law protects you.</p>
-            <p>We use your Personal Data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
-            
-            <h2>Interpretation and Definitions</h2>
-            
-            <h3>Interpretation</h3>
-            <p>Words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
-            
-            <h3>Definitions</h3>
-            <p>For the purposes of this Privacy Policy:</p>
-            <ul>
-                <li><strong>Account</strong> means a unique account created for you to access our Service or parts of our Service.</li>
-                <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other managing authority.</li>
-                <li><strong>Application</strong> refers to Barnaby AI, the software program provided by the Company.</li>
-                <li><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in this Privacy Policy) refers to Barnaby AI.</li>
-                <li><strong>Cookies</strong> are small files placed on your computer, mobile device, or any other device by a website, containing the details of your browsing history on that website among its many uses.</li>
-                <li><strong>Country</strong> refers to the Philippines.</li>
-                <li><strong>Device</strong> means any device that can access the Service, such as a computer, a cell phone, or a digital tablet.</li>
-                <li><strong>Personal Data</strong> (or "Personal Information") is any information that relates to an identified or identifiable individual. We use "Personal Data" and "Personal Information" interchangeably unless a law uses a specific term.</li>
-                <li><strong>Service</strong> refers to the Application, the Website, or both.</li>
-                <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company. It refers to third-party companies or individuals employed by the Company to facilitate the Service, provide the Service on behalf of the Company, perform services related to the Service, or assist the Company in analyzing how the Service is used.</li>
-                <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself (for example, the duration of a page visit).</li>
-                <li><strong>Website</strong> refers to Barnaby AI, accessible from email: <strong>robloxianlaboratoriesinc@gmail.com</strong>.</li>
-                <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
-            </ul>
-
-            <h2>Collecting and Using Your Personal Data</h2>
-            
-            <h3>Types of Data Collected</h3>
-            
-            <h4>Personal Data</h4>
-            <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:</p>
-            <ul>
-                <li>First name and last name</li>
-            </ul>
-            
-            <h4>Usage Data</h4>
-            <p>Usage Data is collected automatically when using the Service.</p>
-            <p>This data may include information such as your Device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.</p>
-            <p>When you access the Service by or through a mobile device, we may collect certain information automatically, including, but not limited to, the type of mobile device you use, your mobile device's unique ID, the IP address of your mobile device, your mobile operating system, the type of mobile Internet browser you use, unique device identifiers, and other diagnostic data.</p>
-            <p>We may also collect information that your browser sends whenever you visit our Service or when you access the Service via a mobile device.</p>
-            
-            <h4>Tracking Technologies and Cookies</h4>
-            <p>We use Cookies and similar tracking technologies to track the activity on our Service and store certain information. Tracking technologies used include beacons, tags, and scripts to collect and track information and to improve and analyze our Service. The technologies we use may include:</p>
-            <ul>
-                <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on your Device. You can instruct your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if you do not accept Cookies, you may not be able to use some parts of our Service.</li>
-                <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons (also referred to as clear gifs, pixel tags, and single-pixel gifs) that permit the Company to count users who have visited those pages or opened an email, and for other related website statistics.</li>
-            </ul>
-            <p>Cookies can be "Persistent" or "Session" Cookies. Persistent Cookies remain on your personal computer or mobile device when you go offline, while Session Cookies are deleted as soon as you close your web browser.</p>
-            <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
-            <ul>
-                <li><strong>Necessary / Essential Cookies</strong> (Session Cookies, Administered by Us): These Cookies are essential to provide you with services available through the Website and to enable you to use some of its features. They help to authenticate users and prevent fraudulent use of user accounts.</li>
-                <li><strong>Cookies Policy / Notice Acceptance Cookies</strong> (Persistent Cookies, Administered by Us): These Cookies identify if users have accepted the use of cookies on the Website.</li>
-                <li><strong>Functionality Cookies</strong> (Persistent Cookies, Administered by Us): These Cookies allow us to remember choices you make when you use the Website, such as remembering your login details or language preference.</li>
-            </ul>
-            
-            <h3>Use of Your Personal Data</h3>
-            <p>The Company may use Personal Data for the following purposes:</p>
-            <ul>
-                <li><strong>To provide and maintain our Service</strong>, including monitoring the usage of our Service.</li>
-                <li><strong>To manage Your Account:</strong> to manage your registration as a user of the Service.</li>
-                <li><strong>For the performance of a contract:</strong> the development, compliance, and undertaking of the purchase contract for products or services you have purchased.</li>
-                <li><strong>To contact You:</strong> via email, telephone calls, SMS, or other equivalent forms of electronic communication.</li>
-                <li><strong>To provide You</strong> with news, special offers, and general information about other goods, services, and events we offer, unless you have opted not to receive such information.</li>
-                <li><strong>To manage Your requests:</strong> to attend to and manage your requests to us.</li>
-                <li><strong>For business transfers:</strong> to evaluate or conduct a merger, divestiture, restructuring, reorganization, dissolution, or other sale or transfer of some or all of our assets.</li>
-                <li><strong>For other purposes:</strong> such as data analysis, identifying usage trends, and determining the effectiveness of our promotional campaigns.</li>
-            </ul>
-
-            <h3>Retention of Your Personal Data</h3>
-            <p>The Company will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our legal agreements.</p>
-            <p>Where possible, we apply shorter retention periods by deleting, aggregating, or anonymizing data when it is no longer needed.</p>
-
-            <h3>Transfer of Your Personal Data</h3>
-            <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. This means that this information may be transferred to—and maintained on—computers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ.</p>
-            
-            <h3>Delete Your Personal Data</h3>
-            <p>You have the right to delete or request that we assist in deleting the Personal Data that we have collected about you. You may update, amend, or delete your information at any time by signing into your Account or contacting us directly.</p>
-            
-            <h3>Disclosure of Your Personal Data</h3>
-            <p>We may disclose your Personal Data under the following circumstances:</p>
-            <ul>
-                <li><strong>Business Transactions:</strong> If the Company is involved in a merger, acquisition, or asset sale.</li>
-                <li><strong>Law enforcement:</strong> If required to do so by law or in response to valid requests by public authorities.</li>
-                <li><strong>Other legal requirements:</strong> To comply with a legal obligation, protect company rights, or prevent wrongdoing.</li>
-            </ul>
-            
-            <h3>Security of Your Personal Data</h3>
-            <p>The security of your Personal Data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially reasonable means to protect your data, we cannot guarantee its absolute security.</p>
-            
-            <h2>Children's Privacy</h2>
-            <p>Our Service does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from anyone under the age of 16. If you are a parent or guardian and are aware that your child has provided us with Personal Data, please contact us.</p>
-            
-            <h2>Links to Other Websites</h2>
-            <p>Our Service may contain links to other websites that are not operated by us. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
-            
-            <h2>Changes to this Privacy Policy</h2>
-            <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
-            
-            <h2>Contact Us</h2>
-            <p>If you have any questions about this Privacy Policy, you can contact us:</p>
-            <ul>
-                <li>By email: <strong>robloxianlaboratoriesinc@gmail.com</strong></li>
-            </ul>
-        </section>
-
-        <hr>
-
-        <section id="terms-conditions">
-            <h1>Terms and Conditions</h1>
-            <div class="date-badge">Last updated: May 10, 2026</div>
-            
-            <p>Please read these terms and conditions carefully before using our Service.</p>
-            
-            <h2>Interpretation and Definitions</h2>
-            
-            <h3>Interpretation</h3>
-            <p>Words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
-            
-            <h3>Definitions</h3>
-            <p>For the purposes of these Terms and Conditions:</p>
-            <ul>
-                <li><strong>Application</strong> means the software program provided by the Company downloaded by you on any electronic device, named Barnaby AI.</li>
-                <li><strong>Application Store</strong> means the digital distribution service operated and developed by Apple Inc. (Apple App Store) or Google Inc. (Google Play Store) in which the Application has been downloaded.</li>
-                <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
-                <li><strong>Country</strong> refers to the Philippines.</li>
-                <li><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in these Terms and Conditions) refers to Barnaby AI.</li>
-                <li><strong>Device</strong> means any device that can access the Service, such as a computer, a cell phone, or a digital tablet.</li>
-                <li><strong>Service</strong> refers to the Application.</li>
-                <li><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions that form the entire agreement between you and the Company regarding the use of the Service.</li>
-                <li><strong>Third-Party Social Media Service</strong> means any services or content provided by a third party that is displayed, included, made available, or linked to through the Service.</li>
-                <li><strong>You</strong> means the individual accessing or using the Service.</li>
-            </ul>
-
-            <h2>Acknowledgment</h2>
-            <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between you and the Company. These Terms set out the rights and obligations of all users regarding the use of the Service.</p>
-            <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms and Conditions. By accessing or using the Service, you agree to be bound by these Terms. If you disagree with any part of these Terms, then you may not access the Service.</p>
-            <p>You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.</p>
-            
-            <h2>Links to Other Websites</h2>
-            <p>Our Service may contain links to third-party websites or services that are not owned or controlled by the Company. The Company has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services.</p>
-            <p>We strongly advise you to read the terms and conditions and privacy policies of any third-party websites or services that you visit.</p>
-            
-            <h2>Termination</h2>
-            <p>We may terminate or suspend your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms and Conditions. Upon termination, your right to use the Service will cease immediately.</p>
-            
-            <h2>Limitation of Liability</h2>
-            <p>Notwithstanding any damages that you might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms, and your exclusive remedy for all of the foregoing, shall be limited to the amount actually paid by you through the Service or 100 USD if you haven't purchased anything through the Service.</p>
-            <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever.</p>
-            
-            <h2>"AS IS" and "AS AVAILABLE" Disclaimer</h2>
-            <p>The Service is provided to you "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. The Company expressly disclaims all warranties, whether express, implied, statutory, or otherwise, with respect to the Service.</p>
-            
-            <h2>Governing Law</h2>
-            <p>The laws of the Country, excluding its conflicts of law rules, shall govern these Terms and your use of the Service.</p>
-            
-            <h2>Disputes Resolution</h2>
-            <p>If you have any concern or dispute about the Service, you agree to first try to resolve the dispute informally by contacting the Company.</p>
-            
-            <h2>United States Legal Compliance</h2>
-            <p>You represent and warrant that (i) you are not located in a country that is subject to the United States government embargo, and (ii) you are not listed on any United States government list of prohibited or restricted parties.</p>
-            
-            <h2>Severability and Waiver</h2>
-            <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
-            
-            <h2>Changes to These Terms and Conditions</h2>
-            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
-            
-            <h2>Contact Us</h2>
-            <p>If you have any questions about these Terms and Conditions, you can contact us:</p>
-            <ul>
-                <li>By email: <strong>robloxianlaboratoriesinc@gmail.com</strong></li>
-            </ul>
-        </section>
+  <nav class="site-nav">
+    <a class="nav-logo" href="#">Barnaby AI</a>
+    <div class="nav-links">
+      <a href="#privacy-policy">Privacy Policy</a>
+      <a href="#terms-conditions">Terms & Conditions</a>
     </div>
+  </nav>
+
+  <div class="page">
+
+    <div class="tab-bar">
+      <a href="#privacy-policy" class="active" id="tab-privacy">Privacy Policy</a>
+      <a href="#terms-conditions" id="tab-terms">Terms & Conditions</a>
+    </div>
+
+    <!-- ── PRIVACY POLICY ── -->
+    <section id="privacy-policy">
+      <div class="glass-card">
+        <div class="section-header">
+          <div class="section-badge">Legal</div>
+          <h1 class="page-title">Privacy Policy</h1>
+          <span class="date-label">Last updated: May 10, 2026</span>
+        </div>
+
+        <div class="content">
+          <p>This Privacy Policy describes our policies and procedures regarding the collection, use, and disclosure of your information when you use the Service. It also informs you about your privacy rights and how the law protects you.</p>
+          <p>We use your Personal Data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+          <h2>Interpretation and Definitions</h2>
+
+          <h3>Interpretation</h3>
+          <p>Words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+          <h3>Definitions</h3>
+          <p>For the purposes of this Privacy Policy:</p>
+          <ul>
+            <li><strong>Account</strong> means a unique account created for you to access our Service or parts of our Service.</li>
+            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for the election of directors or other managing authority.</li>
+            <li><strong>Application</strong> refers to the Barnaby AI Discord bot, the software application provided by the Company and operated through Discord.</li>
+            <li><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in this Privacy Policy) refers to Barnaby AI.</li>
+            <li><strong>Cookies</strong> are small files placed on your computer, mobile device, or any other device by a website, containing the details of your browsing history on that website among its many uses.</li>
+            <li><strong>Country</strong> refers to the Philippines.</li>
+            <li><strong>Device</strong> means any device that can access the Service, such as a computer, a cell phone, or a digital tablet.</li>
+            <li><strong>Personal Data</strong> (or "Personal Information") is any information that relates to an identified or identifiable individual.</li>
+            <li><strong>Service</strong> refers to the Application, the Website, or both.</li>
+            <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company.</li>
+            <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
+            <li><strong>Website</strong> refers to the Barnaby AI presence online, including any web portal or documentation accessible in connection with the Service. For support inquiries, contact us at <strong>robloxianlaboratoriesinc@gmail.com</strong>.</li>
+            <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
+          </ul>
+
+          <h2>Collecting and Using Your Personal Data</h2>
+
+          <h3>Types of Data Collected</h3>
+
+          <h4>Discord Data</h4>
+          <p>Because Barnaby AI operates as a Discord bot, we may access and process certain data provided by the Discord platform in order to deliver the Service. This may include:</p>
+          <ul>
+            <li>Your Discord user ID, username, and display name</li>
+            <li>The content of messages or commands sent directly to the Bot</li>
+            <li>Server (guild) IDs and channel IDs where the Bot is active</li>
+            <li>Role and permission data necessary to execute Bot commands</li>
+          </ul>
+          <p>We do not store the full content of Discord messages beyond what is necessary to process a command and return a response, unless a specific feature explicitly requires it. We do not read or log general server conversations outside of direct Bot interactions.</p>
+
+          <h4>Personal Data</h4>
+          <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:</p>
+          <ul>
+            <li>First name and last name</li>
+          </ul>
+
+          <h4>Usage Data</h4>
+          <p>Usage Data is collected automatically when using the Service. This data may include information such as your Device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.</p>
+          <p>When you access the Service by or through a mobile device, we may collect certain information automatically, including the type of mobile device you use, your mobile device's unique ID, the IP address of your mobile device, your mobile operating system, and other diagnostic data.</p>
+
+          <h4>Tracking Technologies and Cookies</h4>
+          <p>We use Cookies and similar tracking technologies to track the activity on our Service and store certain information. The technologies we use may include:</p>
+          <ul>
+            <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on your Device. You can instruct your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if you do not accept Cookies, you may not be able to use some parts of our Service.</li>
+            <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons that permit the Company to count users who have visited those pages or opened an email.</li>
+          </ul>
+          <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
+          <ul>
+            <li><strong>Necessary / Essential Cookies</strong> — Essential to provide you with services available through the Website and to enable you to use some of its features.</li>
+            <li><strong>Cookies Policy / Notice Acceptance Cookies</strong> — These Cookies identify if users have accepted the use of cookies on the Website.</li>
+            <li><strong>Functionality Cookies</strong> — These Cookies allow us to remember choices you make when you use the Website, such as remembering your login details or language preference.</li>
+          </ul>
+
+          <h3>Use of Your Personal Data</h3>
+          <p>The Company may use Personal Data for the following purposes:</p>
+          <ul>
+            <li><strong>To provide and maintain our Service</strong>, including monitoring the usage of our Service.</li>
+            <li><strong>To manage Your Account:</strong> to manage your registration as a user of the Service.</li>
+            <li><strong>For the performance of a contract:</strong> the development, compliance, and undertaking of the purchase contract for products or services you have purchased.</li>
+            <li><strong>To contact You:</strong> via email, telephone calls, SMS, or other equivalent forms of electronic communication.</li>
+            <li><strong>To provide You</strong> with news, special offers, and general information about other goods, services, and events we offer.</li>
+            <li><strong>To manage Your requests:</strong> to attend to and manage your requests to us.</li>
+            <li><strong>For business transfers:</strong> to evaluate or conduct a merger, divestiture, restructuring, reorganization, or dissolution.</li>
+            <li><strong>For other purposes:</strong> such as data analysis, identifying usage trends, and determining the effectiveness of our promotional campaigns.</li>
+          </ul>
+
+          <h3>Retention of Your Personal Data</h3>
+          <p>The Company will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our legal agreements.</p>
+          <p>Where possible, we apply shorter retention periods by deleting, aggregating, or anonymizing data when it is no longer needed.</p>
+
+          <h3>Transfer of Your Personal Data</h3>
+          <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. This means that this information may be transferred to—and maintained on—computers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ.</p>
+
+          <h3>Delete Your Personal Data</h3>
+          <p>You have the right to delete or request that we assist in deleting the Personal Data that we have collected about you. You may update, amend, or delete your information at any time by signing into your Account or contacting us directly.</p>
+
+          <h3>Disclosure of Your Personal Data</h3>
+          <p>We may disclose your Personal Data under the following circumstances:</p>
+          <ul>
+            <li><strong>Business Transactions:</strong> If the Company is involved in a merger, acquisition, or asset sale.</li>
+            <li><strong>Law enforcement:</strong> If required to do so by law or in response to valid requests by public authorities.</li>
+            <li><strong>Other legal requirements:</strong> To comply with a legal obligation, protect company rights, or prevent wrongdoing.</li>
+          </ul>
+
+          <h3>Security of Your Personal Data</h3>
+          <p>The security of your Personal Data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially reasonable means to protect your data, we cannot guarantee its absolute security.</p>
+
+          <h2>Children's Privacy</h2>
+          <p>Our Service does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from anyone under the age of 16. If you are a parent or guardian and are aware that your child has provided us with Personal Data, please contact us.</p>
+
+          <h2>Links to Other Websites</h2>
+          <p>Our Service may contain links to other websites that are not operated by us. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+
+          <h2>Changes to this Privacy Policy</h2>
+          <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+
+          <h2>Contact Us</h2>
+          <div class="contact-block">
+            <p>If you have any questions about this Privacy Policy, you can contact us by email: <a href="mailto:robloxianlaboratoriesinc@gmail.com">robloxianlaboratoriesinc@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TERMS ── -->
+    <section id="terms-conditions" style="animation-delay: 0.1s;">
+      <div class="glass-card">
+        <div class="section-header">
+          <div class="section-badge">Legal</div>
+          <h1 class="page-title">Terms and Conditions</h1>
+          <span class="date-label">Last updated: May 10, 2026</span>
+        </div>
+
+        <div class="content">
+          <p>Please read these terms and conditions carefully before using our Service.</p>
+
+          <h2>Interpretation and Definitions</h2>
+
+          <h3>Interpretation</h3>
+          <p>Words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+          <h3>Definitions</h3>
+          <p>For the purposes of these Terms and Conditions:</p>
+          <ul>
+            <li><strong>Bot</strong> (also referred to as "Application") means the Barnaby AI Discord bot, a software application operated by the Company and made available through the Discord platform.</li>
+            <li><strong>Discord</strong> means the communication platform operated by Discord Inc., accessible at <a href="https://discord.com" target="_blank" rel="noopener">discord.com</a>, through which the Bot is deployed and accessed.</li>
+            <li><strong>Discord Server</strong> means any server or guild within Discord to which the Bot has been added and in which it operates.</li>
+            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
+            <li><strong>Country</strong> refers to the Philippines.</li>
+            <li><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in these Terms and Conditions) refers to Barnaby AI.</li>
+            <li><strong>Device</strong> means any device that can access Discord and therefore the Service, such as a computer, a cell phone, or a digital tablet.</li>
+            <li><strong>Service</strong> refers to the Bot and any related features, commands, or functionality provided through Discord.</li>
+            <li><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions that form the entire agreement between you and the Company regarding the use of the Service.</li>
+            <li><strong>Third-Party Platform</strong> means Discord or any other third-party service or content that is displayed, integrated, made available, or linked to through the Service.</li>
+            <li><strong>You</strong> means the individual accessing or using the Service, including any Discord server administrator who adds the Bot to a server.</li>
+          </ul>
+
+          <h2>Acknowledgment</h2>
+          <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between you and the Company. By adding the Barnaby AI Bot to your Discord server, or by using any of its commands or features, you confirm that you have read, understood, and agree to be bound by these Terms.</p>
+          <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms and Conditions. If you disagree with any part of these Terms, you must immediately remove the Bot from your Discord server and discontinue all use of the Service.</p>
+          <p>You represent that you are at least 13 years of age (the minimum age required by Discord's Terms of Service) and that you have the authority to add and manage bots in any Discord server where you deploy the Service. The Company does not knowingly permit use of the Service by anyone who does not meet Discord's minimum age requirements.</p>
+          <p>Use of the Service is also subject to Discord's own Terms of Service and Community Guidelines. You remain responsible for ensuring your use of the Bot complies with all applicable Discord policies.</p>
+
+          <h2>Third-Party Platforms</h2>
+          <p>The Service operates within Discord, a third-party platform not owned or controlled by the Company. The Company has no control over, and assumes no responsibility for, the availability, content, privacy policies, or practices of Discord or any other third-party services.</p>
+          <p>The Bot may also reference, link to, or interact with external websites or services. We strongly advise you to read the terms and conditions and privacy policies of Discord and any other third-party services you use alongside the Bot.</p>
+
+          <h2>Termination</h2>
+          <p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason, including without limitation if you breach these Terms and Conditions, misuse the Bot, violate Discord's Terms of Service, or engage in any conduct that is harmful to other users or to the Company.</p>
+          <p>Upon termination, your right to use the Service will cease immediately. The Company reserves the right to remove the Bot from any Discord server at its sole discretion. You may also terminate your use of the Service at any time by removing the Bot from your Discord server.</p>
+
+          <h2>Limitation of Liability</h2>
+          <p>Notwithstanding any damages that you might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms, and your exclusive remedy for all of the foregoing, shall be limited to the amount actually paid by you through the Service or 100 USD if you haven't purchased anything through the Service.</p>
+          <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever.</p>
+
+          <h2>"AS IS" and "AS AVAILABLE" Disclaimer</h2>
+          <p>The Service is provided to you "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. The Company expressly disclaims all warranties, whether express, implied, statutory, or otherwise, with respect to the Service.</p>
+
+          <h2>Governing Law</h2>
+          <p>The laws of the Country, excluding its conflicts of law rules, shall govern these Terms and your use of the Service.</p>
+
+          <h2>Disputes Resolution</h2>
+          <p>If you have any concern or dispute about the Service, you agree to first try to resolve the dispute informally by contacting the Company.</p>
+
+          <h2>United States Legal Compliance</h2>
+          <p>You represent and warrant that (i) you are not located in a country that is subject to the United States government embargo, and (ii) you are not listed on any United States government list of prohibited or restricted parties.</p>
+
+          <h2>Severability and Waiver</h2>
+          <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
+
+          <h2>Changes to These Terms and Conditions</h2>
+          <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
+
+          <h2>Contact Us</h2>
+          <div class="contact-block">
+            <p>If you have any questions about these Terms and Conditions, you can contact us by email: <a href="mailto:robloxianlaboratoriesinc@gmail.com">robloxianlaboratoriesinc@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <p>© 2026 Barnaby AI · Philippines</p>
+    </div>
+
+  </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab-bar a');
+    const sections = ['privacy-policy','terms-conditions'];
+
+    function setActiveTab() {
+      const scrollY = window.scrollY + 120;
+      let current = sections[0];
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= scrollY) current = id;
+      });
+      tabs.forEach(a => {
+        const href = a.getAttribute('href').replace('#','');
+        a.classList.toggle('active', href === current);
+      });
+    }
+
+    window.addEventListener('scroll', setActiveTab, { passive: true });
+    setActiveTab();
+  </script>
 
 </body>
 </html>
