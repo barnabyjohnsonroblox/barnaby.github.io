@@ -3,65 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Legal | Barnaby AI</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <title>Legal | Barnaby AI &amp; Blueberry AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --glass-bg: rgba(255,255,255,0.50);
-      --glass-border: rgba(255,255,255,0.78);
-      --text-dark: #111827;
-      --text-mid: #374151;
-      --text-muted: #6b7280;
-      --accent: #2563eb;
-      --accent-soft: rgba(37,99,235,0.10);
+      --paper: #f6f4ef;
+      --card: #fdfcfa;
+      --line: #ddd7cb;
+      --text-dark: #28241f;
+      --text-mid: #46413a;
+      --text-muted: #7a746a;
+      --accent: #6b4a2f;
+      --accent-soft: #ece6d9;
     }
 
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 16px;
-      line-height: 1.75;
+      line-height: 1.65;
       color: var(--text-mid);
       min-height: 100vh;
-      background:
-        radial-gradient(ellipse 80% 60% at 15% 10%, rgba(147,197,253,0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 70% 50% at 85% 80%, rgba(196,221,255,0.4) 0%, transparent 55%),
-        linear-gradient(160deg, #dbeafe 0%, #eff6ff 40%, #e0f2fe 70%, #dbeafe 100%);
-      background-attachment: fixed;
-      overflow-x: hidden;
+      background: var(--paper);
     }
-
-    .orb {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 0;
-      filter: blur(70px);
-    }
-    .orb-1 {
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(96,165,250,0.28) 0%, transparent 65%);
-      top: -200px; left: -200px;
-      animation: drift1 20s ease-in-out infinite alternate;
-    }
-    .orb-2 {
-      width: 550px; height: 550px;
-      background: radial-gradient(circle, rgba(147,197,253,0.22) 0%, transparent 65%);
-      bottom: -150px; right: -150px;
-      animation: drift2 25s ease-in-out infinite alternate;
-    }
-    .orb-3 {
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(186,230,253,0.2) 0%, transparent 65%);
-      top: 40%; left: 60%;
-      animation: drift3 30s ease-in-out infinite alternate;
-    }
-    @keyframes drift1 { to { transform: translate(100px, 80px) scale(1.05); } }
-    @keyframes drift2 { to { transform: translate(-80px, -100px) scale(0.95); } }
-    @keyframes drift3 { to { transform: translate(-60px, 60px) scale(1.1); } }
 
     /* NAV */
     .site-nav {
@@ -72,37 +39,30 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 40px;
-      height: 62px;
-      background: rgba(239,246,255,0.55);
-      backdrop-filter: blur(32px) saturate(1.8);
-      -webkit-backdrop-filter: blur(32px) saturate(1.8);
-      border-bottom: 1px solid var(--glass-border);
-      box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 4px 28px rgba(147,197,253,0.13);
+      height: 58px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
     }
     .nav-logo {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: -0.01em;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: 1.05rem;
       color: var(--text-dark);
       text-decoration: none;
     }
-    .nav-links { display: flex; gap: 6px; }
+    .nav-links { display: flex; gap: 22px; }
     .nav-links a {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 500;
       text-decoration: none;
       color: var(--text-muted);
-      padding: 7px 15px;
-      border-radius: 20px;
-      border: 1px solid transparent;
-      transition: all 0.22s ease;
+      padding: 4px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s ease, border-color 0.15s ease;
     }
     .nav-links a:hover {
-      background: rgba(255,255,255,0.65);
-      border-color: var(--glass-border);
-      color: var(--accent);
+      color: var(--text-dark);
+      border-bottom-color: var(--text-dark);
     }
 
     /* PAGE */
@@ -116,230 +76,158 @@
 
     /* HERO */
     .hero {
-      text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--line);
     }
     .hero-eyebrow {
-      display: inline-block;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(37,99,235,0.18);
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 18px;
-    }
-    .hero-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      letter-spacing: -0.04em;
-      color: var(--text-dark);
-      line-height: 1.08;
+      color: var(--text-muted);
       margin-bottom: 10px;
     }
+    .hero-title {
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: clamp(1.9rem, 4.4vw, 2.6rem);
+      color: var(--text-dark);
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
     .hero-sub {
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
     }
 
-    /* ══ LIQUID GLASS TOGGLE ══ */
+    /* ══ TOGGLE ══ */
     .switch-wrap {
       display: flex;
-      justify-content: center;
-      margin-bottom: 36px;
+      margin-bottom: 14px;
     }
+    .switch-wrap.doc-switch { margin-bottom: 28px; }
 
     .lg-switch {
       position: relative;
-      display: flex;
+      display: inline-flex;
       align-items: stretch;
-      background: rgba(255,255,255,0.36);
-      backdrop-filter: blur(28px) saturate(1.7);
-      -webkit-backdrop-filter: blur(28px) saturate(1.7);
-      border: 1px solid rgba(255,255,255,0.85);
-      border-radius: 60px;
-      padding: 5px;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.95) inset,
-        0 -1px 0 rgba(200,225,255,0.28) inset,
-        0 10px 40px rgba(147,197,253,0.24),
-        0 2px 8px rgba(37,99,235,0.07);
+      background: var(--accent-soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 3px;
       width: fit-content;
     }
 
-    /* top glare streak */
-    .lg-switch::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 60px;
-      background: linear-gradient(175deg,
-        rgba(255,255,255,0.5) 0%,
-        rgba(255,255,255,0.05) 45%,
-        transparent 60%);
-      pointer-events: none;
-      z-index: 3;
-    }
-
-    /* animated sliding pill */
+    /* sliding indicator */
     .switch-pill {
       position: absolute;
-      top: 5px;
-      height: calc(100% - 10px);
-      border-radius: 52px;
-      background: linear-gradient(160deg,
-        rgba(255,255,255,0.96) 0%,
-        rgba(240,248,255,0.88) 100%);
-      border: 1px solid rgba(255,255,255,1);
-      box-shadow:
-        0 1px 0 rgba(255,255,255,1) inset,
-        0 6px 20px rgba(37,99,235,0.12),
-        0 2px 6px rgba(147,197,253,0.2);
+      top: 3px;
+      height: calc(100% - 6px);
+      border-radius: 6px;
+      background: var(--card);
+      border: 1px solid var(--line);
       transition:
-        left   0.44s cubic-bezier(0.34, 1.48, 0.64, 1),
-        width  0.44s cubic-bezier(0.34, 1.48, 0.64, 1);
+        left   0.22s ease,
+        width  0.22s ease;
       z-index: 1;
       pointer-events: none;
-    }
-
-    /* width stretch on press (squish) */
-    .lg-switch.squish .switch-pill {
-      transition:
-        left  0.44s cubic-bezier(0.34, 1.48, 0.64, 1),
-        width 0.14s ease-out;
     }
 
     .switch-btn {
       position: relative;
       z-index: 2;
-      font-family: 'Montserrat', sans-serif;
       font-size: 0.83rem;
-      font-weight: 600;
+      font-weight: 500;
       color: var(--text-muted);
-      padding: 11px 30px;
-      border-radius: 52px;
+      padding: 9px 22px;
+      border-radius: 6px;
       border: none;
       background: transparent;
       cursor: pointer;
       white-space: nowrap;
-      transition: color 0.28s ease;
+      transition: color 0.18s ease;
       user-select: none;
       -webkit-tap-highlight-color: transparent;
-      letter-spacing: -0.01em;
     }
-    .switch-btn.active { color: var(--accent); }
+    .switch-btn.active { color: var(--text-dark); font-weight: 600; }
     .switch-btn:not(.active):hover { color: var(--text-dark); }
 
-    /* GLASS CARD */
+    /* CARD */
     .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(36px) saturate(1.9);
-      -webkit-backdrop-filter: blur(36px) saturate(1.9);
-      border-radius: 28px;
-      border: 1px solid var(--glass-border);
-      padding: 52px 60px;
+      background: var(--card);
+      border-radius: 4px;
+      border: 1px solid var(--line);
+      padding: 48px 56px;
       position: relative;
-      overflow: hidden;
-      box-shadow:
-        0 1px 0 rgba(255,255,255,0.92) inset,
-        0 -1px 0 rgba(200,225,255,0.22) inset,
-        0 20px 70px rgba(147,197,253,0.16),
-        0 4px 16px rgba(37,99,235,0.05);
-    }
-    .glass-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 42%;
-      background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 100%);
-      border-radius: 28px 28px 0 0;
-      pointer-events: none;
-    }
-    .glass-card::after {
-      content: '';
-      position: absolute;
-      top: -50px; left: -70px;
-      width: 220px; height: 220px;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 65%);
-      pointer-events: none;
     }
 
     /* PANELS */
     .panel { display: none; }
     .panel.active {
       display: block;
-      animation: panelIn 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+      animation: panelIn 0.18s ease both;
     }
     @keyframes panelIn {
-      from { opacity: 0; transform: translateY(16px) scale(0.994); filter: blur(2px); }
-      to   { opacity: 1; transform: translateY(0)   scale(1);     filter: blur(0); }
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
     /* SECTION HEADER */
-    .section-header { margin-bottom: 38px; }
+    .section-header {
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line);
+    }
     .section-badge {
-      display: inline-flex;
-      align-items: center;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
       text-transform: uppercase;
-      color: var(--accent);
-      background: var(--accent-soft);
-      border: 1px solid rgba(37,99,235,0.18);
-      padding: 5px 13px;
-      border-radius: 20px;
-      margin-bottom: 14px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
     .section-title {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 800;
-      font-size: clamp(1.55rem, 3.5vw, 2.1rem);
-      letter-spacing: -0.03em;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: clamp(1.45rem, 3vw, 1.8rem);
       color: var(--text-dark);
-      line-height: 1.1;
-      margin-bottom: 9px;
+      line-height: 1.2;
+      margin-bottom: 8px;
     }
     .date-label { font-size: 0.8rem; color: var(--text-muted); }
 
     /* CONTENT */
     .content h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: -0.02em;
+      font-family: 'Source Serif 4', serif;
+      font-weight: 600;
+      font-size: 1.18rem;
       color: var(--text-dark);
-      margin-top: 42px;
-      margin-bottom: 13px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid rgba(219,234,254,0.85);
+      margin-top: 38px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--line);
     }
     .content h3 {
-      font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      font-size: 0.93rem;
+      font-size: 0.95rem;
       color: var(--text-dark);
-      margin-top: 26px;
-      margin-bottom: 9px;
-    }
-    .content h4 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-top: 20px;
+      margin-top: 24px;
       margin-bottom: 8px;
     }
+    .content h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 18px;
+      margin-bottom: 7px;
+    }
     .content p {
-      font-size: 0.9375rem;
+      font-size: 0.93rem;
       color: var(--text-mid);
       margin-bottom: 13px;
     }
@@ -347,51 +235,41 @@
     .content li {
       font-size: 0.9rem;
       color: var(--text-mid);
-      padding: 9px 12px 9px 33px;
+      padding: 5px 0 5px 18px;
       position: relative;
-      border-radius: 10px;
-      margin-bottom: 3px;
-      transition: background 0.16s;
+      margin-bottom: 1px;
     }
-    .content li:hover { background: rgba(255,255,255,0.52); }
     .content li::before {
-      content: '';
+      content: '—';
       position: absolute;
-      left: 13px; top: 17px;
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--accent);
-      opacity: 0.42;
+      left: 0; top: 5px;
+      color: var(--text-muted);
     }
     .content strong { color: var(--text-dark); font-weight: 600; }
     .content a {
       color: var(--accent);
       text-decoration: none;
-      border-bottom: 1px solid rgba(37,99,235,0.22);
-      transition: border-color 0.16s;
+      border-bottom: 1px solid var(--accent);
+      opacity: 0.85;
     }
-    .content a:hover { border-color: var(--accent); }
+    .content a:hover { opacity: 1; }
 
     /* CONTACT BLOCK */
     .contact-block {
-      margin-top: 34px;
-      padding: 20px 24px;
-      background: rgba(255,255,255,0.56);
-      border: 1px solid rgba(255,255,255,0.88);
-      border-radius: 16px;
-      box-shadow: 0 1px 0 rgba(255,255,255,0.9) inset;
+      margin-top: 28px;
+      padding: 16px 20px;
+      background: var(--accent-soft);
+      border-left: 3px solid var(--accent);
+      border-radius: 2px;
     }
     .contact-block p { margin: 0; font-size: 0.875rem; }
 
     /* FOOTER */
     .footer {
-      text-align: center;
-      padding: 28px 0 0;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.75rem;
-      font-weight: 500;
+      text-align: left;
+      padding: 24px 0 0;
+      font-size: 0.78rem;
       color: var(--text-muted);
-      letter-spacing: 0.02em;
     }
 
     /* MOBILE */
@@ -399,27 +277,22 @@
       .site-nav { padding: 0 20px; height: 54px; }
       .nav-links { display: none; }
       .page { padding: 76px 14px 60px; }
-      .glass-card { padding: 30px 22px; border-radius: 20px; }
-      .glass-card::before { border-radius: 20px 20px 0 0; }
-      .switch-btn { padding: 11px 18px; font-size: 0.78rem; }
+      .glass-card { padding: 28px 20px; }
+      .switch-btn { padding: 9px 16px; font-size: 0.78rem; }
     }
     @media (max-width: 420px) {
-      .lg-switch { width: calc(100vw - 44px); justify-content: center; }
+      .lg-switch { width: 100%; }
       .switch-btn { flex: 1; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-
   <nav class="site-nav">
-    <a class="nav-logo" href="#">Barnaby AI</a>
+    <a class="nav-logo" href="#" id="navLogo">Barnaby AI</a>
     <div class="nav-links">
-      <a href="#" onclick="switchTo('privacy');return false;">Privacy Policy</a>
-      <a href="#" onclick="switchTo('terms');return false;">Terms &amp; Conditions</a>
+      <a href="#" onclick="switchDoc('privacy');return false;">Privacy Policy</a>
+      <a href="#" onclick="switchDoc('terms');return false;">Terms &amp; Conditions</a>
     </div>
   </nav>
 
@@ -427,24 +300,35 @@
 
     <div class="hero">
       <div class="hero-eyebrow">Legal Documents</div>
-      <h1 class="hero-title">Barnaby AI Legal</h1>
+      <h1 class="hero-title" id="heroTitle">Barnaby AI Legal</h1>
       <p class="hero-sub">Last updated: May 10, 2026</p>
     </div>
 
-    <!-- LIQUID GLASS TOGGLE SWITCH -->
-    <div class="switch-wrap">
-      <div class="lg-switch" id="lgSwitch">
-        <div class="switch-pill" id="switchPill"></div>
-        <button class="switch-btn active" id="btnPrivacy" onclick="switchTo('privacy')">Privacy Policy</button>
-        <button class="switch-btn" id="btnTerms" onclick="switchTo('terms')">Terms &amp; Conditions</button>
+    <!-- PRODUCT TOGGLE SWITCH -->
+    <div class="switch-wrap product-switch">
+      <div class="lg-switch" id="productSwitch">
+        <div class="switch-pill" id="productPill"></div>
+        <button class="switch-btn active" id="btnBarnaby" onclick="switchProduct('barnaby')">Barnaby AI</button>
+        <button class="switch-btn" id="btnBlueberry" onclick="switchProduct('blueberry')">Blueberry AI</button>
+      </div>
+    </div>
+
+    <!-- DOCUMENT TOGGLE SWITCH -->
+    <div class="switch-wrap doc-switch">
+      <div class="lg-switch" id="docSwitch">
+        <div class="switch-pill" id="docPill"></div>
+        <button class="switch-btn active" id="btnPrivacy" onclick="switchDoc('privacy')">Privacy Policy</button>
+        <button class="switch-btn" id="btnTerms" onclick="switchDoc('terms')">Terms &amp; Conditions</button>
       </div>
     </div>
 
     <!-- SINGLE GLASS CARD -->
     <div class="glass-card" id="glassCard">
 
-      <!-- ── PRIVACY PANEL ── -->
-      <div class="panel active" id="panel-privacy">
+      <!-- ══════════════ BARNABY AI ══════════════ -->
+
+      <!-- BARNABY · PRIVACY -->
+      <div class="panel active" id="panel-barnaby-privacy" data-product="barnaby" data-doc="privacy">
         <div class="section-header">
           <div class="section-badge">Privacy Policy</div>
           <h1 class="section-title">Privacy Policy</h1>
@@ -560,8 +444,8 @@
         </div>
       </div>
 
-      <!-- ── TERMS PANEL ── -->
-      <div class="panel" id="panel-terms">
+      <!-- BARNABY · TERMS -->
+      <div class="panel" id="panel-barnaby-terms" data-product="barnaby" data-doc="terms">
         <div class="section-header">
           <div class="section-badge">Terms &amp; Conditions</div>
           <h1 class="section-title">Terms and Conditions</h1>
@@ -632,68 +516,283 @@
         </div>
       </div>
 
+      <!-- ══════════════ BLUEBERRY AI MODERATION SYSTEM ══════════════ -->
+
+      <!-- BLUEBERRY · PRIVACY -->
+      <div class="panel" id="panel-blueberry-privacy" data-product="blueberry" data-doc="privacy">
+        <div class="section-header">
+          <div class="section-badge">Privacy Policy</div>
+          <h1 class="section-title">Privacy Policy</h1>
+          <span class="date-label">Last updated: May 10, 2026</span>
+        </div>
+        <div class="content">
+          <p>This Privacy Policy describes our policies and procedures regarding the collection, use, and disclosure of your information when you use the Service. It also informs you about your privacy rights and how the law protects you.</p>
+          <p>We use your Personal Data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+          <h2>Interpretation and Definitions</h2>
+          <h3>Interpretation</h3>
+          <p>Words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+          <h3>Definitions</h3>
+          <p>For the purposes of this Privacy Policy:</p>
+          <ul>
+            <li><strong>Account</strong> means a unique account created for you to access our Service or parts of our Service.</li>
+            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest, or other securities entitled to vote for election of directors or other managing authority.</li>
+            <li><strong>Application</strong> refers to the Blueberry AI Moderation System Discord bot, the software application provided by the Company and operated through Discord.</li>
+            <li><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in this Privacy Policy) refers to Blueberry AI Moderation System.</li>
+            <li><strong>Cookies</strong> are small files placed on your computer, mobile device, or any other device by a website, containing details of your browsing history on that website among its many uses.</li>
+            <li><strong>Country</strong> refers to the Philippines.</li>
+            <li><strong>Device</strong> means any device that can access the Service, such as a computer, a cell phone, or a digital tablet.</li>
+            <li><strong>Personal Data</strong> (or "Personal Information") is any information that relates to an identified or identifiable individual.</li>
+            <li><strong>Service</strong> refers to the Application, the Website, or both.</li>
+            <li><strong>Service Provider</strong> means any natural or legal person who processes the data on behalf of the Company.</li>
+            <li><strong>Usage Data</strong> refers to data collected automatically, either generated by the use of the Service or from the Service infrastructure itself.</li>
+            <li><strong>Website</strong> refers to the Blueberry AI Moderation System presence online, including any web portal or documentation accessible in connection with the Service. For support inquiries, contact us at <strong>robloxianlaboratoriesinc@gmail.com</strong>.</li>
+            <li><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.</li>
+          </ul>
+
+          <h2>Collecting and Using Your Personal Data</h2>
+          <h3>Types of Data Collected</h3>
+
+          <h4>Discord Data</h4>
+          <p>Because Blueberry AI Moderation System operates as a Discord bot, we may access and process certain data provided by the Discord platform in order to deliver the Service. This may include:</p>
+          <ul>
+            <li>Your Discord user ID, username, and display name</li>
+            <li>The content of messages or commands sent directly to the Bot</li>
+            <li>Server (guild) IDs and channel IDs where the Bot is active</li>
+            <li>Role and permission data necessary to execute Bot commands</li>
+          </ul>
+          <p>We do not store the full content of Discord messages beyond what is necessary to process a command and return a response, unless a specific feature explicitly requires it. We do not read or log general server conversations outside of direct Bot interactions.</p>
+
+          <h4>Personal Data</h4>
+          <p>While using our Service, we may ask you to provide us with certain personally identifiable information. This may include, but is not limited to:</p>
+          <ul>
+            <li>First name and last name</li>
+          </ul>
+
+          <h4>Usage Data</h4>
+          <p>Usage Data is collected automatically when using the Service. This data may include information such as your Device's Internet Protocol address (e.g., IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers, and other diagnostic data.</p>
+          <p>When you access the Service by or through a mobile device, we may collect certain information automatically, including the type of mobile device you use, your mobile device's unique ID, the IP address of your mobile device, your mobile operating system, and other diagnostic data.</p>
+
+          <h4>Tracking Technologies and Cookies</h4>
+          <p>We use Cookies and similar tracking technologies to track the activity on our Service and store certain information. The technologies we use may include:</p>
+          <ul>
+            <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on your Device. You can instruct your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if you do not accept Cookies, you may not be able to use some parts of our Service.</li>
+            <li><strong>Web Beacons.</strong> Certain sections of our Service and our emails may contain small electronic files known as web beacons that permit the Company to count users who have visited those pages or opened an email.</li>
+          </ul>
+          <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
+          <ul>
+            <li><strong>Necessary / Essential Cookies</strong> — Essential to provide you with services available through the Website and to enable some of its features.</li>
+            <li><strong>Cookies Policy / Notice Acceptance Cookies</strong> — These Cookies identify if users have accepted the use of cookies on the Website.</li>
+            <li><strong>Functionality Cookies</strong> — These Cookies allow us to remember choices you make when you use the Website, such as remembering your login details or language preference.</li>
+          </ul>
+
+          <h3>Use of Your Personal Data</h3>
+          <p>The Company may use Personal Data for the following purposes:</p>
+          <ul>
+            <li><strong>To provide and maintain our Service</strong>, including monitoring the usage of our Service.</li>
+            <li><strong>To manage Your Account:</strong> to manage your registration as a user of the Service.</li>
+            <li><strong>For the performance of a contract:</strong> the development, compliance, and undertaking of the purchase contract for products or services you have purchased.</li>
+            <li><strong>To contact You:</strong> via email, telephone calls, SMS, or other equivalent forms of electronic communication.</li>
+            <li><strong>To provide You</strong> with news, special offers, and general information about other goods, services, and events we offer.</li>
+            <li><strong>To manage Your requests:</strong> to attend to and manage your requests to us.</li>
+            <li><strong>For business transfers:</strong> to evaluate or conduct a merger, divestiture, restructuring, reorganization, or dissolution.</li>
+            <li><strong>For other purposes:</strong> such as data analysis, identifying usage trends, and determining the effectiveness of our promotional campaigns.</li>
+          </ul>
+
+          <h3>Retention of Your Personal Data</h3>
+          <p>The Company will retain your Personal Data only for as long as is necessary for the purposes set out in this Privacy Policy. We will retain and use your Personal Data to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our legal agreements. Where possible, we apply shorter retention periods by deleting, aggregating, or anonymizing data when it is no longer needed.</p>
+
+          <h3>Transfer of Your Personal Data</h3>
+          <p>Your information, including Personal Data, is processed at the Company's operating offices and in any other places where the parties involved in the processing are located. This means that this information may be transferred to—and maintained on—computers located outside of your state, province, country, or other governmental jurisdiction where data protection laws may differ.</p>
+
+          <h3>Delete Your Personal Data</h3>
+          <p>You have the right to delete or request that we assist in deleting the Personal Data that we have collected about you. You may update, amend, or delete your information at any time by signing into your Account or contacting us directly.</p>
+
+          <h3>Disclosure of Your Personal Data</h3>
+          <p>We may disclose your Personal Data under the following circumstances:</p>
+          <ul>
+            <li><strong>Business Transactions:</strong> If the Company is involved in a merger, acquisition, or asset sale.</li>
+            <li><strong>Law enforcement:</strong> If required to do so by law or in response to valid requests by public authorities.</li>
+            <li><strong>Other legal requirements:</strong> To comply with a legal obligation, protect company rights, or prevent wrongdoing.</li>
+          </ul>
+
+          <h3>Security of Your Personal Data</h3>
+          <p>The security of your Personal Data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage, is 100% secure. While we strive to use commercially reasonable means to protect your data, we cannot guarantee its absolute security.</p>
+
+          <h2>Children's Privacy</h2>
+          <p>Our Service does not address anyone under the age of 16. We do not knowingly collect personally identifiable information from anyone under the age of 16. If you are a parent or guardian and are aware that your child has provided us with Personal Data, please contact us.</p>
+
+          <h2>Links to Other Websites</h2>
+          <p>Our Service may contain links to other websites that are not operated by us. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services.</p>
+
+          <h2>Changes to this Privacy Policy</h2>
+          <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date.</p>
+
+          <h2>Contact Us</h2>
+          <div class="contact-block">
+            <p>If you have any questions about this Privacy Policy, you can contact us by email: <a href="mailto:robloxianlaboratoriesinc@gmail.com">robloxianlaboratoriesinc@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- BLUEBERRY · TERMS -->
+      <div class="panel" id="panel-blueberry-terms" data-product="blueberry" data-doc="terms">
+        <div class="section-header">
+          <div class="section-badge">Terms &amp; Conditions</div>
+          <h1 class="section-title">Terms and Conditions</h1>
+          <span class="date-label">Last updated: May 10, 2026</span>
+        </div>
+        <div class="content">
+          <p>Please read these terms and conditions carefully before using our Service.</p>
+
+          <h2>Interpretation and Definitions</h2>
+          <h3>Interpretation</h3>
+          <p>Words whose initial letters are capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+          <h3>Definitions</h3>
+          <p>For the purposes of these Terms and Conditions:</p>
+          <ul>
+            <li><strong>Bot</strong> (also referred to as "Application") means the Blueberry AI Moderation System Discord bot, a software application operated by the Company and made available through the Discord platform.</li>
+            <li><strong>Discord</strong> means the communication platform operated by Discord Inc., accessible at <a href="https://discord.com" target="_blank" rel="noopener">discord.com</a>, through which the Bot is deployed and accessed.</li>
+            <li><strong>Discord Server</strong> means any server or guild within Discord to which the Bot has been added and in which it operates.</li>
+            <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
+            <li><strong>Country</strong> refers to the Philippines.</li>
+            <li><strong>Company</strong> (referred to as either "the Company", "We", "Us", or "Our" in these Terms and Conditions) refers to Blueberry AI Moderation System.</li>
+            <li><strong>Device</strong> means any device that can access Discord and therefore the Service, such as a computer, a cell phone, or a digital tablet.</li>
+            <li><strong>Service</strong> refers to the Bot and any related features, commands, or functionality provided through Discord.</li>
+            <li><strong>Terms and Conditions</strong> (also referred to as "Terms") means these Terms and Conditions that form the entire agreement between you and the Company regarding the use of the Service.</li>
+            <li><strong>Third-Party Platform</strong> means Discord or any other third-party service or content that is displayed, integrated, made available, or linked to through the Service.</li>
+            <li><strong>You</strong> means the individual accessing or using the Service, including any Discord server administrator who adds the Bot to a server.</li>
+          </ul>
+
+          <h2>Acknowledgment</h2>
+          <p>These are the Terms and Conditions governing the use of this Service and the agreement that operates between you and the Company. By adding the Blueberry AI Moderation System Bot to your Discord server, or by using any of its commands or features, you confirm that you have read, understood, and agree to be bound by these Terms.</p>
+          <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms and Conditions. If you disagree with any part of these Terms, you must immediately remove the Bot from your Discord server and discontinue all use of the Service.</p>
+          <p>You represent that you are at least 13 years of age (the minimum age required by Discord's Terms of Service) and that you have the authority to add and manage bots in any Discord server where you deploy the Service. The Company does not knowingly permit use of the Service by anyone who does not meet Discord's minimum age requirements.</p>
+          <p>Use of the Service is also subject to Discord's own Terms of Service and Community Guidelines. You remain responsible for ensuring your use of the Bot complies with all applicable Discord policies.</p>
+
+          <h2>Third-Party Platforms</h2>
+          <p>The Service operates within Discord, a third-party platform not owned or controlled by the Company. The Company has no control over, and assumes no responsibility for, the availability, content, privacy policies, or practices of Discord or any other third-party services.</p>
+          <p>The Bot may also reference, link to, or interact with external websites or services. We strongly advise you to read the terms and conditions and privacy policies of Discord and any other third-party services you use alongside the Bot.</p>
+
+          <h2>Termination</h2>
+          <p>We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason, including without limitation if you breach these Terms and Conditions, misuse the Bot, violate Discord's Terms of Service, or engage in any conduct that is harmful to other users or to the Company.</p>
+          <p>Upon termination, your right to use the Service will cease immediately. The Company reserves the right to remove the Bot from any Discord server at its sole discretion. You may also terminate your use of the Service at any time by removing the Bot from your Discord server.</p>
+
+          <h2>Limitation of Liability</h2>
+          <p>Notwithstanding any damages that you might incur, the entire liability of the Company and any of its suppliers under any provision of these Terms, and your exclusive remedy for all of the foregoing, shall be limited to the amount actually paid by you through the Service or 100 USD if you haven't purchased anything through the Service.</p>
+          <p>To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever.</p>
+
+          <h2>"AS IS" and "AS AVAILABLE" Disclaimer</h2>
+          <p>The Service is provided to you "AS IS" and "AS AVAILABLE" and with all faults and defects without warranty of any kind. The Company expressly disclaims all warranties, whether express, implied, statutory, or otherwise, with respect to the Service.</p>
+
+          <h2>Governing Law</h2>
+          <p>The laws of the Country, excluding its conflicts of law rules, shall govern these Terms and your use of the Service.</p>
+
+          <h2>Disputes Resolution</h2>
+          <p>If you have any concern or dispute about the Service, you agree to first try to resolve the dispute informally by contacting the Company.</p>
+
+          <h2>United States Legal Compliance</h2>
+          <p>You represent and warrant that (i) you are not located in a country that is subject to the United States government embargo, and (ii) you are not listed on any United States government list of prohibited or restricted parties.</p>
+
+          <h2>Severability and Waiver</h2>
+          <p>If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect.</p>
+
+          <h2>Changes to These Terms and Conditions</h2>
+          <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms.</p>
+
+          <h2>Contact Us</h2>
+          <div class="contact-block">
+            <p>If you have any questions about these Terms and Conditions, you can contact us by email: <a href="mailto:robloxianlaboratoriesinc@gmail.com">robloxianlaboratoriesinc@gmail.com</a></p>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <div class="footer">© 2026 Barnaby AI · Philippines</div>
+    <div class="footer" id="footerLine">© 2026 Barnaby AI · Philippines</div>
 
   </div>
 
   <script>
-    const pill      = document.getElementById('switchPill');
-    const btnP      = document.getElementById('btnPrivacy');
-    const btnT      = document.getElementById('btnTerms');
-    const lgSwitch  = document.getElementById('lgSwitch');
-    let current = 'privacy';
+    const productPill = document.getElementById('productPill');
+    const docPill      = document.getElementById('docPill');
 
-    function positionPill(btn) {
-      const sr = lgSwitch.getBoundingClientRect();
+    const btnBarnaby   = document.getElementById('btnBarnaby');
+    const btnBlueberry = document.getElementById('btnBlueberry');
+    const productSwitch = document.getElementById('productSwitch');
+
+    const btnP        = document.getElementById('btnPrivacy');
+    const btnT        = document.getElementById('btnTerms');
+    const docSwitch   = document.getElementById('docSwitch');
+
+    const navLogo     = document.getElementById('navLogo');
+    const heroTitle   = document.getElementById('heroTitle');
+    const footerLine  = document.getElementById('footerLine');
+
+    let currentProduct = 'barnaby';
+    let currentDoc      = 'privacy';
+
+    const PRODUCT_NAMES = {
+      barnaby:   'Barnaby AI',
+      blueberry: 'Blueberry AI Moderation System'
+    };
+
+    function positionPill(pill, switchEl, btn) {
+      const sr = switchEl.getBoundingClientRect();
       const br = btn.getBoundingClientRect();
       pill.style.left  = (br.left - sr.left - 1) + 'px';
       pill.style.width = br.width + 'px';
     }
 
-    function switchTo(target) {
-      if (target === current) return;
-
-      const inBtn  = target === 'privacy' ? btnP : btnT;
-      const outBtn = target === 'privacy' ? btnT : btnP;
-
-      /* squish: briefly widen pill */
-      lgSwitch.classList.add('squish');
-      const oldLeft  = pill.style.left;
-      const oldWidth = pill.style.width;
-      const inRect   = inBtn.getBoundingClientRect();
-      const outRect  = outBtn.getBoundingClientRect();
-      const sr       = lgSwitch.getBoundingClientRect();
-      const stretchLeft  = Math.min(inRect.left, outRect.left) - sr.left - 1;
-      const stretchWidth = Math.max(inRect.right, outRect.right) - Math.min(inRect.left, outRect.left) + 2;
-      pill.style.left  = stretchLeft + 'px';
-      pill.style.width = stretchWidth + 'px';
-
-      setTimeout(() => {
-        lgSwitch.classList.remove('squish');
-        positionPill(inBtn);
-      }, 120);
-
-      /* swap buttons */
+    function animateSwitch(switchEl, pill, inBtn, outBtn) {
+      positionPill(pill, switchEl, inBtn);
       inBtn.classList.add('active');
       outBtn.classList.remove('active');
-
-      /* swap panels */
-      const outPanel = document.getElementById('panel-' + current);
-      const inPanel  = document.getElementById('panel-' + target);
-      outPanel.classList.remove('active');
-      outPanel.style.display = 'none';
-      inPanel.style.display  = 'block';
-      void inPanel.offsetWidth;
-      inPanel.classList.add('active');
-
-      current = target;
-      document.getElementById('glassCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
-    window.addEventListener('load',   () => positionPill(btnP));
-    window.addEventListener('resize', () => positionPill(current === 'privacy' ? btnP : btnT));
+    function updatePanel() {
+      document.querySelectorAll('.panel').forEach(p => {
+        const match = p.dataset.product === currentProduct && p.dataset.doc === currentDoc;
+        if (match) {
+          p.style.display = 'block';
+          void p.offsetWidth;
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+          p.style.display = 'none';
+        }
+      });
+      navLogo.textContent   = PRODUCT_NAMES[currentProduct];
+      heroTitle.textContent = PRODUCT_NAMES[currentProduct] + ' Legal';
+      footerLine.textContent = '© 2026 ' + PRODUCT_NAMES[currentProduct] + ' · Philippines';
+    }
+
+    function switchProduct(target) {
+      if (target === currentProduct) return;
+      const inBtn  = target === 'barnaby' ? btnBarnaby : btnBlueberry;
+      const outBtn = target === 'barnaby' ? btnBlueberry : btnBarnaby;
+      animateSwitch(productSwitch, productPill, inBtn, outBtn);
+      currentProduct = target;
+      updatePanel();
+    }
+
+    function switchDoc(target) {
+      if (target === currentDoc) return;
+      const inBtn  = target === 'privacy' ? btnP : btnT;
+      const outBtn = target === 'privacy' ? btnT : btnP;
+      animateSwitch(docSwitch, docPill, inBtn, outBtn);
+      currentDoc = target;
+      updatePanel();
+    }
+
+    window.addEventListener('load', () => {
+      positionPill(productPill, productSwitch, btnBarnaby);
+      positionPill(docPill, docSwitch, btnP);
+    });
+    window.addEventListener('resize', () => {
+      positionPill(productPill, productSwitch, currentProduct === 'barnaby' ? btnBarnaby : btnBlueberry);
+      positionPill(docPill, docSwitch, currentDoc === 'privacy' ? btnP : btnT);
+    });
   </script>
 
 </body>
